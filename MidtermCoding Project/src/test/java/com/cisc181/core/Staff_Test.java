@@ -55,7 +55,7 @@ public class Staff_Test {
 
 	@Test(expected = PersonException.class)
 	public void testStaff2() throws PersonException {
-		Date birthDate1 = new Date(1910, 1, 1);
+		Date birthDate1 = new Date(10, 1, 1);
 		Date hireDate = new Date();
 		Staff staffMember1 = new Staff("FirstName", "MiddleName", "LastName", birthDate1, "Address", "(555)-555-5555",
 				"Email", "officeHours", 0, 20000, hireDate, eTitle.MR);

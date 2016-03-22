@@ -50,8 +50,8 @@ public abstract class Person implements java.io.Serializable {
 		Date today = new Date();
 		Date birthDate = DOB;
 		@SuppressWarnings("deprecation")
-		int maxAge = today.getYear() - 100 + 1900;
-		if (DOB.getYear() > maxAge) {
+		int oldestYear = today.getYear()-100;
+		if (DOB.getYear() > oldestYear) {
 			this.DOB = DOB;
 		}
 		else {

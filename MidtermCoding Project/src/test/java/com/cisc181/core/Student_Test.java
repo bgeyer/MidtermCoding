@@ -15,7 +15,18 @@ import com.cisc181.eNums.eTitle;
 public class Student_Test {
 
 	@BeforeClass
-	public static void setup() throws PersonException {
+	public static void setup() {
+		
+		
+	}
+
+	@Test
+	public void test() {
+		assertEquals(1, 1);
+	}
+	@Test
+	public void testGPA() throws PersonException {
+		ArrayList<Student> testStudent = new ArrayList<Student>();
 		Course course1 = new Course();
 		Course course2 = new Course();
 		Course course3 = new Course();
@@ -45,7 +56,6 @@ public class Student_Test {
 		testSection.add(section6);
 		
 		Date birthDate = new Date();
-		Date hireDate = new Date();
 		Student student1 = new Student("FirstName", "MiddleName", "LastName", birthDate, eMajor.PHYSICS, "Address",
 				"(555)-555-5555", "Email");
 		Student student2 = new Student("FirstName", "MiddleName", "LastName", birthDate, eMajor.BUSINESS, "Address",
@@ -66,27 +76,32 @@ public class Student_Test {
 				"(555)-555-5555", "Email");
 		Student student10 = new Student("FirstName", "MiddleName", "LastName", birthDate, eMajor.CHEM, "Address",
 				"(555)-555-5555", "Email");
+		testStudent.add(student1);
+		testStudent.add(student2);
+		testStudent.add(student3);
+		testStudent.add(student4);
+		testStudent.add(student5);
+		testStudent.add(student6);
+		testStudent.add(student7);
+		testStudent.add(student8);
+		testStudent.add(student9);
+		testStudent.add(student10);
 		
-	}
-
-	@Test
-	public void test() {
-		assertEquals(1, 1);
-	}
-	@Test
-	public void testGPA() {
-		ArrayList<Student> testStudent = new ArrayList<Student>();
-		//testStudent.add(student1);
-		//testStudent.add(student2);
-		//testStudent.add(student3);
-		//testStudent.add(student4);
-		//testStudent.add(student5);
-		//testStudent.add(student6);
-		//testStudent.add(student7);
-		//testStudent.add(student8);
-		//testStudent.add(student9);
-		//testStudent.add(student10);
-		//for(Student students:testStudent) {
+		for(Student students:testStudent) {
+			for(Section sections:testSection) {
+				Enrollment enrollment = new Enrollment(sections.getSectionID(), students.getStudentID());
+			}
+		}
 			
 		}
+	@Test
+	public void testChangeMajor() throws PersonException {
+		Date birthDate = new Date(1960, 1, 1);
+		Student student1 = new Student("FirstName", "MiddleName", "LastName", birthDate, eMajor.PHYSICS, "Address",
+				"(555)-555-5555", "Email");
+		student1.setMajor(eMajor.CHEM);
+		Enum expectedValue = eMajor.CHEM;
+		Enum actualValue = student1.getMajor();
+		assertEquals(expectedValue, actualValue);
+	}
 	}
